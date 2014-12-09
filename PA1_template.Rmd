@@ -8,23 +8,26 @@ output:
 
 ## Loading and preprocessing the data
 ```{r}
-setwd("C:/Users/ub55123/Desktop/Kaggle/repdata")
+setwd("C:/Users/Mark/Desktop/Kaggle/rpdata/RepData_PeerAssessment1")
 data = read.csv("activity.csv")
 data$date <- as.Date(data$date)
 ```
 
 ## What is mean total number of steps taken per day?
-## get total number of steps for every day, ignoring NAs.
+
+1. Get total number of steps for every day, ignoring NAs.
 ```{r}
 total = aggregate(steps~date,data,sum)
 ```
-##get mean and median total number of steps taken per day:
+2. Get mean and median total number of steps taken per day:
 ```{r}
 meanTotal = mean(total$steps)
 medianTotal = median(total$steps)
 ```
-## Histogram of total number of steps per day
+
+3. Histogram of total number of steps per day
 ```{r}
+library(ggplot2)
 g = ggplot(total,aes(steps))+geom_histogram()
 print(g)
 ```
@@ -32,12 +35,17 @@ print(g)
 
 
 ## What is the average daily activity pattern?
-# Time Series plot over intervals
-ggplot(data,aes(interval,steps)) + geom_line()
-# Time Series average steps plot over daily 
-meanDaily = aggregate(steps~date,data,mean)
-ggplot(meanDaily,aes(date,steps)) + geom_line()
+1. Time Series plot over intervals
+```{r}
+print(ggplot(data,aes(interval,steps)) + geom_line())
+```
 
+2. Time Series average steps plot over daily 
+
+```{r}
+meanDaily = aggregate(steps~date,data,mean)
+print(ggplot(meanDaily,aes(date,steps)) + geom_line())
+```
 
 ## Imputing missing values
 
