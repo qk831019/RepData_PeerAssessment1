@@ -25,7 +25,8 @@ medianTotal = median(total$steps)
 ```
 ## Histogram of total number of steps per day
 ```{r}
-ggplot(total,aes(steps))+geom_histogram()
+g = ggplot(total,aes(steps))+geom_histogram()
+print(g)
 ```
 
 
