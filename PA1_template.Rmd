@@ -14,16 +14,16 @@ data$date <- as.Date(data$date)
 ```
 
 ## What is mean total number of steps taken per day?
-# get total number of steps for every day, ignoring NAs.
+## get total number of steps for every day, ignoring NAs.
 ```{r}
 total = aggregate(steps~date,data,sum)
 ```
-#get mean and median total number of steps taken per day:
+##get mean and median total number of steps taken per day:
 ```{r}
 meanTotal = mean(total$steps)
 medianTotal = median(total$steps)
 ```
-# histogram of total number of steps per day
+## Histogram of total number of steps per day
 ```{r}
 ggplot(total,aes(steps))+geom_histogram()
 ```
